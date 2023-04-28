@@ -1,0 +1,58 @@
+version: "3"
+
+services:
+  proxy:
+    build:
+      context: .
+      dockerfile: proxy.dockerfile
+    ports:
+      - "2000:2000"
+
+  native:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "native"
+
+  xml:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "xml"
+
+  json:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "json"
+
+  protobuf:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "protobuf"
+
+  avro:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "avro"
+
+  yaml:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "yaml"
+
+  message_pack:
+    build:
+      context: .
+      dockerfile: server.dockerfile
+      args:
+        SERIALIZATION_FORMAT: "message_pack"
